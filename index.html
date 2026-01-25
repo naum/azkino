@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{Title}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Tumblr Custom Colors -->
+  <meta name="color:Text" content="#202124"/>
+  <meta name="color:Text Accent" content="#3778c2"/>
+  <meta name="color:Background" content="#f6f7fb"/>
+  <meta name="color:Background Accent" content="#dde7f0"/>
+  <meta name="color:Brand" content="#ff7b54"/>
+
+  <!-- Tumblr Custom Fonts (Google Fonts) -->
+  <meta name="select:Body Font" content="Inter"/>
+  <meta name="select:Body Font" content="Roboto"/>
+  <meta name="select:Body Font" content="Open Sans"/>
+  <meta name="select:Body Font" content="Lato"/>
+  <meta name="select:Body Font" content="Merriweather"/>
+  <meta name="select:Body Font" content="Noto Sans"/>
+  <meta name="select:Body Font" content="IBM Plex Sans"/>
+  <meta name="select:Body Font" content="Georgia"/>
+  <meta name="select:Body Font" content="Arial"/>
+  <meta name="select:Body Font" content="Times New Roman"/>
+
+  <meta name="select:Heading Font" content="Montserrat"/>
+  <meta name="select:Heading Font" content="Oswald"/>
+  <meta name="select:Heading Font" content="Raleway"/>
+  <meta name="select:Heading Font" content="Playfair Display"/>
+  <meta name="select:Heading Font" content="Roboto Slab"/>
+  <meta name="select:Heading Font" content="Lora"/>
+  <meta name="select:Heading Font" content="Poppins"/>
+  <meta name="select:Heading Font" content="Merriweather"/>
+  <meta name="select:Heading Font" content="Arial Black"/>
+
+  <meta name="select:Monospace Font" content="Fira Mono"/>
+  <meta name="select:Monospace Font" content="Source Code Pro"/>
+  <meta name="select:Monospace Font" content="JetBrains Mono"/>
+  <meta name="select:Monospace Font" content="IBM Plex Mono"/>
+  <meta name="select:Monospace Font" content="Roboto Mono"/>
+  <meta name="select:Monospace Font" content="Courier New"/>
+  <meta name="select:Monospace Font" content="Menlo"/>
+  <meta name="select:Monospace Font" content="Monaco"/>
+
+  <!-- Google Fonts Loader: Only loads fonts selected in Customizer -->
+  <script>
+    // Maps Tumblr variable names to Google Fonts family names and CSS fallback stacks
+    var fontFamilies = {
+      "Inter":         ["Inter", "Inter, Arial, sans-serif"],
+      "Roboto":        ["Roboto", "Roboto, Arial, sans-serif"],
+      "Open Sans":     ["Open+Sans", "'Open Sans', Arial, sans-serif"],
+      "Lato":          ["Lato", "Lato, Arial, sans-serif"],
+      "Merriweather":  ["Merriweather", "Merriweather, serif"],
+      "Noto Sans":     ["Noto+Sans", "'Noto Sans', Arial, sans-serif"],
+      "IBM Plex Sans": ["IBM+Plex+Sans", "'IBM Plex Sans', Arial, sans-serif"],
+      "Georgia":       ["Georgia", "Georgia, serif"],
+      "Arial":         ["Arial", "Arial, sans-serif"],
+      "Times New Roman": ["Times+New+Roman", "'Times New Roman', serif"],
+
+      "Montserrat":    ["Montserrat", "Montserrat, Arial, sans-serif"],
+      "Oswald":        ["Oswald", "Oswald, Arial, sans-serif"],
+      "Raleway":       ["Raleway", "Raleway, Arial, sans-serif"],
+      "Playfair Display": ["Playfair+Display", "'Playfair Display', serif"],
+      "Roboto Slab":   ["Roboto+Slab", "'Roboto Slab', serif"],
+      "Lora":          ["Lora", "Lora, serif"],
+      "Poppins":       ["Poppins", "Poppins, Arial, sans-serif"],
+      "Arial Black":   ["Arial+Black", "'Arial Black', Arial, sans-serif"],
+
+      "Fira Mono":     ["Fira+Mono", "'Fira Mono', monospace"],
+      "Source Code Pro": ["Source+Code+Pro", "'Source Code Pro', monospace"],
+      "JetBrains Mono": ["JetBrains+Mono", "'JetBrains Mono', monospace"],
+      "IBM Plex Mono": ["IBM+Plex+Mono", "'IBM Plex Mono', monospace"],
+      "Roboto Mono":   ["Roboto+Mono", "'Roboto Mono', monospace"],
+      "Courier New":   ["Courier+New", "'Courier New', monospace"],
+      "Menlo":         ["Menlo", "Menlo, monospace"],
+      "Monaco":        ["Monaco", "Monaco, monospace"]
+    };
+
+    // Get Tumblr variables (will be replaced by Tumblr at runtime)
+    var bodyFont = "{select:Body Font}";
+    var headingFont = "{select:Heading Font}";
+    var monoFont = "{select:Monospace Font}";
+
+    // Load each unique font family from Google Fonts
+    var googleFontSet = new Set();
+    [bodyFont, headingFont, monoFont].forEach(function(f) {
+      if (fontFamilies[f] && fontFamilies[f][0].indexOf(" ") === -1) {
+        googleFontSet.add(fontFamilies[f][0]);
+      }
+    });
+
+    if (googleFontSet.size > 0) {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = "https://fonts.googleapis.com/css?family=" +
+        Array.from(googleFontSet).join('|') + ":wght@400;700&display=swap";
+      document.head.appendChild(link);
+    }
+  </script>
+
+  <style>
+    :root {
+        --brand-accent: color-mix(in srgb, {color:Brand} 80%, black 20%);
+    }
+    html, body {
+      margin: 0; padding: 0;
+      font-family: {select:Body Font}, Arial, sans-serif;
+      background: {color:Background};
+      color: {color:Text};
+      line-height: 1.33;
+      min-height: 100%;
+    }
+    a {
+      color: var(--color-text-accent, {color:Text Accent});
+      text-decoration: none;
+      transition: color 0.18s, text-decoration 0.18s;
+    }
+    
+    a:hover,
+    a:focus {
+      color: var(--color-brand, {color:Brand});
+      text-decoration: underline;
+    }
+    h1, h2, h3, h4, h5, h6, .blog-title {
+      font-family: {select:Heading Font}, Arial, sans-serif;
+    }
+    pre, code, .monospace {
+      font-family: {select:Monospace Font}, 'Fira Mono', 'Consolas', monospace;
+      font-size: 1em;
+    }
+    
+    blockquote {
+        border-left: 4px solid {color:Brand};
+        font-size: 1rem;
+        margin: 1em 0;
+        padding: 12px 20px;
+        color: {color:Text};
+    }
+    .container {
+      max-width: 650px;
+      margin: 3em auto;
+      padding: 2em 1.5em;
+      background: {color:Background Accent};
+      border-radius: 1em;
+      box-shadow: 0 3px 24px #0001;
+    }
+    .blog-title {
+      font-size: 3em;
+      font-weight: bold;
+      text-align: center;
+      margin: 0 0 1em 0;
+      color: {color:Background};
+      letter-spacing: 0.03em;
+      text-shadow: 
+        2px 0 0 {color:Text},
+        -2px 0 0 {color:Text},
+        0 2px 0 {color:Text},
+        0 -2px 0 {color:Text},
+        1.5px 1.5px 0 {color:Text},
+        1.5px -1.5px 0 {color:Text},
+        -1.5px 1.5px 0 {color:Text},
+        -1.5px -1.5px 0 {color:Text},
+        0 8px 16px rgba(0,0,0,0.33);
+    }
+    .blog-title a {
+        color: {color:Brand};
+    }
+    .blog-title a:hover {
+        color: {color:Text Accent};
+        text-decoration: none;
+    }
+    .link {
+        font-size: 1.33em;
+    }
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2em;
+    }
+    .search-bar input[type="text"] {
+      width: 80%;
+      max-width: 420px;
+      padding: 0.7em 1em;
+      font-size: 1.08em;
+      border: 2px solid {color:Brand};
+      border-radius: 1em 0 0 1em;
+      outline: none;
+      background: #fff;
+      color: {color:Text};
+      transition: border 0.2s;
+    }
+    .search-bar button {
+      padding: 0.7em 1.3em;
+      border: none;
+      border-radius: 0 1em 1em 0;
+      background: {color:Brand};
+      color: #fff;
+      font-size: 1.08em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .search-bar button:hover {
+      background: {color:Text Accent};
+    }
+    .description {
+      text-align: center;
+      color: {color:Text Accent};
+      margin-bottom: 2.5em;
+      font-size: 1.1em;
+    }
+    article {
+      background: #fff;
+      margin-bottom: 2.2em;
+      padding: 1.3em 1.6em;
+      border-radius: 1em;
+      box-shadow: 0 1px 7px #0001;
+      word-break: break-word;
+    }
+    .post-title {
+      margin: 0 0 0.3em 0;
+      font-size: 1.28em;
+      color: {color:Brand};
+      font-weight: bold;
+    }
+    .post-date {
+      font-size: 0.75em;
+      color: {color:Text Accent};
+      margin-bottom: 0.7em;
+    }
+    .tags {
+      margin-top: 0.8em;
+      font-size: 0.96em;
+    }
+    .tags a {
+      color: {color:Text Accent};
+      margin-right: 0.5em;
+      text-decoration: none;
+    }
+    .tags a:hover {
+      color: {color:Brand};
+      text-decoration: underline;
+    }
+    .post-footer {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        align-items: center;
+        margin: 0;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        border-top: 1px solid {color:Background Accent};
+    }
+
+    .post-footer a {
+        font-size: 0.9em;
+        color: {color:Text Accent};
+    }
+
+    .post-footer .like_button {
+        position: relative;
+        width: 24px;
+        height: 24px;
+        display: inline-block;
+    }
+
+    .footer-left {
+        flex: 1;
+        text-align: left;
+    }
+    
+    .footer-right {
+        display: flex;
+        flex-direction: row;
+        gap: 0.75rem;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    
+    .post-notes {
+      margin-top: 1.77em;
+      padding: 1em 0;
+      border-top: 1px solid {color:Background Accent};
+    }
+    
+    .post-notes ol {
+        list-style-type: none;
+        padding: 8px 0;
+    }
+    
+    .post-notes li {
+        margin: 0;
+        padding: 8px 12px;
+    }
+    
+    .post-notes a.avatar_frame {
+        display: block;
+        float: left;
+        margin: -2px 12px 0 0;
+    }
+    
+    .post-notes img.avatar {
+        height: 24px;
+        width: 24px;
+        border-radius: 100%;
+    }
+    
+    .quote-short {
+        font-size: 2.37rem;
+    }
+    
+    .quote-medium {
+        font-size: 1.77rem;
+    }
+    
+    .quote-long {
+        font-size: 1.33rem;
+    }
+
+    nav {
+      text-align: center;
+      margin: 2.5em 0 0 0;
+    }
+    nav a {
+      color: {color:Background};
+      padding: 0.75em 1.33em;
+      border-radius: 0.75em;
+      text-decoration: none;
+      background: {color:Brand};
+      margin: 0 0.6em;
+      transition: background 0.2s, color 0.2s;
+    }
+    nav a:hover {
+      color: {color:Background};
+      background: {color:Text Accent};
+      text-decoration: none;
+    }
+    
+    .video-responsive {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio, adjust as needed */
+      padding-top: 25px;
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+    }
+    
+    .video-responsive iframe,
+    .video-responsive object,
+    .video-responsive embed,
+    .video-responsive video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+    }
+
+    @media (max-width: 700px) {
+      .container { padding: 1em 0.3em; }
+      article { padding: 1em 0.7em; }
+      .search-bar input[type="text"] { width: 65%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="blog-title"><a href="/">{Title}</a></div>
+    <form class="search-bar" action="/search" method="get">
+      <input type="text" name="q" placeholder="Search this blog…" value="{SearchQuery}" />
+      <button type="submit">Search</button>
+    </form>
+    <div class="description">{Description}</div>
+
+    {block:Posts}
+      <article id="post-{PostID}">
+      
+          <div class="post-date"><a href="{Permalink}">{TimeAgo}</a></div>
+
+      
+          {block:Text}
+            <div class="post text">
+                {block:Title}
+                    <h2>{Title}</h2>
+                {/block:Title}
+                <!--Original Post-->
+                {block:NotReblog}
+                    {Body}
+                {/block:NotReblog}
+                <!--Post is a reblog-->
+                {block:RebloggedFrom}
+                    <div class="reblog-list">
+                        {block:Reblogs}
+                            <div class="reblog-header">
+                                {block:IsActive}
+                                    <a href="{Permalink}">{Username}</a>
+                                {/block:IsActive}
+                                {block:IsDeactivated}
+                                    <span>{Username}</span>
+                                {/block:IsDeactivated}
+                            </div>
+                            <div class="reblog-body">{Body}</div>
+                        {/block:Reblogs}
+                    </div>
+                {/block:RebloggedFrom}
+            </div>
+        {/block:Text}
+      
+        {block:Link}
+            <div class="post link">
+                <a href="{URL}" class="link" {Target}>{Name}</a>
+                <!--Original Post-->
+                {block:NotReblog}
+                    {Description}
+                {/block:NotReblog}
+                <!--Post is a reblog-->
+                {block:RebloggedFrom}
+                    <div class="reblog-list">
+                        {block:Reblogs}
+                        <div class="reblog-header">
+                            {block:IsActive}
+                                <a href="{Permalink}">{Username}</a>
+                            {/block:IsActive}
+                            {block:IsDeactivated}
+                                <span>{Username}</span>
+                            {/block:IsDeactivated}
+                        </div>
+                        <div class="reblog-body">{Body}</div>
+                        {/block:Reblogs}
+                    </div>
+                {/block:RebloggedFrom}
+            </div>
+        {/block:Link}      
+      
+
+        {Block:Photo}{LinkOpenTag}
+            <img style="max-width:100%;" src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>{LinkCloseTag}
+            {block:Exif}
+            <ul>{block:Camera}
+                <li>Camera: {Camera}</li>{/block:Camera}{block:Aperture}
+                <li>Aperture: {Aperture}</li>{/block:Aperture}{block:Exposure}
+                <li>Exposure: {Exposure}</li>{/block:Exposure}{block:FocalLength}
+                <li>Focal Length: {FocalLength}</li>{/block:FocalLength}
+            </ul>
+            {/block:Exif}
+            <!--Original Post-->
+            {block:NotReblog}
+                {Caption}
+            {/block:NotReblog}
+            <!--Post is a reblog-->
+            {block:RebloggedFrom}
+                ...
+            {/block:RebloggedFrom}
+        {/Block:Photo}
+        
+
+        {block:Quote}
+          <blockquote class="quote-{Length}" style="
+            border-left: none;
+            border-radius: 4px;
+            margin: 1em 0;
+            padding: 12px 20px;
+            background: {color:Background Accent};
+            color: {color:Text};
+          ">
+            {Quote}
+            {block:Source}
+              <div style="
+                margin-top: 0.75rem;
+                margin-bottom: 0.75rem;
+                color: {color:Text Accent};
+                font-style: normal;
+                text-align: right;
+              ">
+                — {Source}
+              </div>
+            {/block:Source}
+          </blockquote>
+        {/block:Quote}
+        
+
+        {block:Video}
+            <div class="post video">
+                <div class="video-responsive">{Video-700}</div>
+                <!--Original Post-->
+                {block:NotReblog}
+                    {Description}
+                {/block:NotReblog}
+                <!--Post is a reblog-->
+                {block:RebloggedFrom}
+                    <div class="reblog-list">
+                        {block:Reblogs}
+                            <div class="reblog-header">
+                                {block:IsActive}
+                                    <a href="{Permalink}">{Username}</a>
+                                {/block:IsActive}
+                                {block:IsDeactivated}
+                                    span>{Username}</span>
+                                {/block:IsDeactivated}
+                            </div>
+                            <div class="reblog-body">{Body}</div>
+                        {/block:Reblogs}
+                    </div>
+                {/block:RebloggedFrom}
+            </div>
+        {/block:Video}
+
+
+        {block:HasTags}
+          <div class="tags">
+            {block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}
+          </div>
+        {/block:HasTags}
+
+        <div class="post-footer">
+            <div class="footer-left">
+                {block:NoteCount}<a href="{Permalink}#notes">{NoteCountWithLabel}</a>{/block:NoteCount}
+            </div>
+            <div class="footer-right">
+                {ReblogButton}
+                {LikeButton}
+            </div>
+        </div>
+        {block:PostNotes}<div class="post-notes">{PostNotes}</div>{/block:PostNotes}
+        
+      </article>
+    {/block:Posts}
+
+    <nav>
+      {block:PreviousPage}
+        <a href="{PreviousPage}">&laquo; Newer</a>
+      {/block:PreviousPage}
+      {block:NextPage}
+        <a href="{NextPage}">Older &raquo;</a>
+      {/block:NextPage}
+    </nav>
+    <footer style="text-align:center; margin-top:3.16rem; font-size:0.75rem; color: {color:Text Accent};">
+        <p>Theme by <a href="https://www.tumblr.com/azkino">Azkino</a></p>
+        <p>A GNT creation &copy;2025</p>
+    </footer>
+  </div>
+  <script src="https://assets.tumblr.com/client/prod/standalone/reblog_button.js"></script>
+<script src="https://assets.tumblr.com/client/prod/standalone/like_button.js"></script>
+
+</body>
+</html>
+
+
