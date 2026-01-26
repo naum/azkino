@@ -156,11 +156,16 @@
   <style>
     :root {
         --brand-accent: color-mix(in srgb, {color:Brand} 80%, black 20%);
+        --body-size: {text:Body Font Size};
     }
     html, body {
       margin: 0; padding: 0;
       font-family: {select:Body Font}, Arial, sans-serif;
-      font-size: {text:Body Font Size};
+      font-size: clamp(
+        var(--body-size),
+        calc(var(--body-size) + 0.35vw),
+        calc(var(--body-size) + 6px)
+      );
       background: {color:Background};
       color: {color:Text};
       line-height: 1.33;
@@ -176,6 +181,9 @@
     a:focus {
       color: var(--color-brand, {color:Brand});
       text-decoration: underline;
+    }
+    strong, b {
+      font-weight: 800;
     }
     h1, h2, h3, h4, h5, h6, .blog-title {
       font-family: {select:Heading Font}, Arial, sans-serif;
@@ -356,6 +364,9 @@
       font-size: 1.28em;
       color: {color:Brand};
       font-weight: bold;
+    }
+    .post.text {
+      font-size: 1.16em;
     }
     .post.text img {
       width: 100%;
