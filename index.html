@@ -534,6 +534,18 @@
       margin: 0 0.6em;
       transition: background 0.2s, color 0.2s;
     }
+    .pagination .arrow {
+      display: inline-block;
+      font-size: 1.1em;
+      letter-spacing: 0.08em;
+      transform: translateY(-0.02em);
+    }
+    .pagination .arrow-left {
+      margin-right: 0.25em;
+    }
+    .pagination .arrow-right {
+      margin-left: 0.25em;
+    }
     .pagination a:hover {
       color: {color:Background};
       background: {color:Text Accent};
@@ -877,10 +889,10 @@
 
     <nav class="pagination">
       {block:PreviousPage}
-        <a href="{PreviousPage}">&laquo; Newer</a>
+        <a href="{PreviousPage}"><span class="arrow arrow-left">←</span>Newer</a>
       {/block:PreviousPage}
       {block:NextPage}
-        <a href="{NextPage}">Older &raquo;</a>
+        <a href="{NextPage}">Older<span class="arrow arrow-right">→</span></a>
       {/block:NextPage}
     </nav>
     <footer style="text-align:center; margin-top:3.16rem; font-size:0.75rem; color: {color:Text Accent};">
