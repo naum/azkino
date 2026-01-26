@@ -326,9 +326,22 @@
     .chat-lines li:last-child {
       border-bottom: none;
     }
-    .answer-question {
+    .post.answer .answer-question {
       font-weight: bold;
       margin-bottom: 0.6em;
+    }
+    .post.answer .answer-question-text {
+      margin-bottom: 0.9em;
+      padding: 0.65em 0.9em;
+      border: 2px solid {color:Brand};
+      background: {color:Background Accent};
+      border-radius: 0.6em;
+    }
+    .post.answer .answer {
+      padding: 0.75em 0.95em;
+      background: #fff;
+      border: 1px solid {color:Background Accent};
+      border-radius: 0.6em;
     }
     article {
       background: #fff;
@@ -567,7 +580,6 @@
       
           <div class="post-date"><a href="{Permalink}">{TimeAgo}</a></div>
 
-      
           {block:Text}
             <div class="post text">
                 {block:Title}
@@ -601,6 +613,9 @@
                 <a href="{URL}" class="link" {Target}>{Name}</a>
                 <!--Original Post-->
                 {block:NotReblog}
+                    {block:Description}
+                        <div class="link-description">{Description}</div>
+                    {/block:Description}
                     {Caption}
                 {/block:NotReblog}
                 <!--Post is a reblog-->
@@ -786,7 +801,6 @@
                 <div class="answer">{Answer}</div>
             </div>
         {/block:Answer}
-
 
         {block:HasTags}
           <div class="tags">
