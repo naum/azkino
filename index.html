@@ -206,7 +206,7 @@
     }
     .container {
       max-width: {text:Max Width};
-      margin: 3em auto;
+      margin: 2.37em auto;
       padding: 2em 1.5em;
       background: {color:Background Accent};
       border-radius: 1em;
@@ -216,7 +216,7 @@
       font-size: {text:Heading Font Size};
       font-weight: 800;
       text-align: center;
-      margin: 0 0 1em 0;
+      margin: 0 0 1.77rem 0;
       color: {color:Background};
       letter-spacing: 0.03em;
       text-shadow: 
@@ -407,6 +407,17 @@
       display: flex;
       gap: 0.75rem;
       align-items: center;
+    }
+    .post-header .post-actions .like_button,
+    .post-header .post-actions .reblog_button {
+      opacity: 0.43;
+      transition: opacity 0.18s;
+    }
+    .post-header .post-actions .like_button:hover,
+    .post-header .post-actions .reblog_button:hover,
+    .post-header .post-actions .like_button:focus-within,
+    .post-header .post-actions .reblog_button:focus-within {
+      opacity: 1;
     }
     .tags {
       margin: 0;
