@@ -11,11 +11,11 @@
   {/block:Description}
 
   <!-- Tumblr Custom Colors -->
-  <meta name="color:Text" content="#2a2622"/>
-  <meta name="color:Text Accent" content="#b44f3f"/>
-  <meta name="color:Background" content="#f5e5c6"/>
-  <meta name="color:Background Accent" content="#e2c79c"/>
-  <meta name="color:Brand" content="#7aa6c8"/>
+  <meta name="color:Text" content="#f1efe6"/>
+  <meta name="color:Text Accent" content="#d5ccb2"/>
+  <meta name="color:Background" content="#163826"/>
+  <meta name="color:Background Accent" content="#204433"/>
+  <meta name="color:Brand" content="#7fae93"/>
 
   <!-- Tumblr Custom Text -->
   <meta name="text:Popular Tags Title" content="Popular Tags"/>
@@ -160,13 +160,30 @@
 
   <style>
     :root {
-        --brand-accent: color-mix(in srgb, {color:Brand} 80%, black 20%);
+        --brand-accent: color-mix(in srgb, {color:Brand} 80%, {color:Text} 20%);
         --body-size: {text:Body Font Size};
+        --surface: color-mix(in srgb, {color:Background} 96%, {color:Background Accent} 4%);
+        --surface-strong: color-mix(in srgb, {color:Background} 92%, {color:Background Accent} 8%);
+        --post-bg: color-mix(in srgb, var(--surface) 60%, {color:Background} 40%);
+        --shadow-faint: color-mix(in srgb, {color:Text} 6%, transparent);
+        --shadow-soft: color-mix(in srgb, {color:Text} 10%, transparent);
+        --shadow-strong: color-mix(in srgb, {color:Text} 35%, transparent);
         --quote-bg: color-mix(in srgb, {color:Background} 96%, {color:Background Accent} 4%);
         --quote-ink: color-mix(in srgb, {color:Text} 82%, {color:Background} 18%);
         --quote-scratch: color-mix(in srgb, {color:Text} 7%, {color:Background} 93%);
         --quote-parchment: color-mix(in srgb, {color:Background Accent} 28%, {color:Background} 72%);
         --quote-edge: color-mix(in srgb, {color:Background Accent} 38%, {color:Text} 62%);
+    }
+    html.theme-dark {
+        --surface: color-mix(in srgb, {color:Background} 92%, {color:Background Accent} 8%);
+        --surface-strong: color-mix(in srgb, {color:Background} 88%, {color:Background Accent} 12%);
+        --post-bg: color-mix(in srgb, {color:Background} 90%, {color:Background Accent} 10%);
+        --shadow-faint: color-mix(in srgb, {color:Text} 10%, transparent);
+        --shadow-soft: color-mix(in srgb, {color:Text} 18%, transparent);
+        --shadow-strong: color-mix(in srgb, {color:Text} 45%, transparent);
+        --quote-bg: color-mix(in srgb, {color:Background} 92%, {color:Background Accent} 8%);
+        --quote-parchment: color-mix(in srgb, {color:Background Accent} 18%, {color:Background} 82%);
+        --quote-edge: color-mix(in srgb, {color:Background Accent} 22%, {color:Background} 78%);
     }
     html, body {
       margin: 0; padding: 0;
@@ -226,7 +243,7 @@
       padding: 2em 1.5em;
       background: {color:Background Accent};
       border-radius: 1em;
-      box-shadow: 0 3px 24px #0001;
+      box-shadow: 0 3px 24px var(--shadow-soft);
     }
     .blog-title {
       font-size: {text:Heading Font Size};
@@ -244,7 +261,7 @@
         1.5px -1.5px 0 {color:Text},
         -1.5px 1.5px 0 {color:Text},
         -1.5px -1.5px 0 {color:Text},
-        0 8px 16px rgba(0,0,0,0.33);
+        0 8px 16px var(--shadow-strong);
     }
     .blog-title a {
         color: {color:Brand};
@@ -269,7 +286,7 @@
       border: 2px solid {color:Brand};
       border-radius: 1em 0 0 1em;
       outline: none;
-      background: #fff;
+      background: var(--surface);
       color: {color:Text};
       transition: border 0.2s;
     }
@@ -278,7 +295,7 @@
       border: none;
       border-radius: 0 1em 1em 0;
       background: {color:Brand};
-      color: #fff;
+      color: {color:Background};
       font-size: 1.08em;
       cursor: pointer;
       transition: background 0.2s;
@@ -363,16 +380,16 @@
     }
     .post.answer .answer {
       padding: 0.75em 0.95em;
-      background: #fff;
+      background: var(--surface-strong);
       border: 1px solid {color:Background Accent};
       border-radius: 0.6em;
     }
     article {
-      background: #fff;
+      background: var(--surface);
       margin-bottom: 2.2em;
       padding: 1.3em 1.6em;
       border-radius: 1em;
-      box-shadow: 0 1px 7px #0001;
+      box-shadow: 0 1px 7px var(--shadow-soft);
       word-break: break-word;
     }
     .post-title {
@@ -383,6 +400,7 @@
     }
     .post.text {
       font-size: 1.16em;
+      background: var(--post-bg);
     }
     .post.text img {
       width: 100%;
@@ -391,12 +409,18 @@
       display: block;
       margin: 0.6em 0;
     }
+    .post.text ol li, .post.text ul li {
+      margin-bottom: 1rem;
+    }
     .post.photo img {
       width: 100%;
       max-width: 100%;
       height: auto;
       display: block;
       margin: 0.6em 0;
+    }
+    .post.link {
+      background: var(--post-bg);
     }
     .post-date {
       font-size: inherit;
@@ -587,7 +611,7 @@
             color-mix(in srgb, var(--quote-bg) 40%, transparent)
           );
         background-blend-mode: multiply;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(0, 0, 0, 0.02);
+        box-shadow: 0 2px 10px var(--shadow-faint), inset 0 0 0 1px var(--shadow-faint);
     }
 
     .pagination {
@@ -688,6 +712,30 @@
     {CustomCSS}
 
   </style>
+  <script>
+    (function() {
+      function parseRgb(value) {
+        if (!value) { return null; }
+        var match = value.match(/rgba?\(([^)]+)\)/);
+        if (!match) { return null; }
+        var parts = match[1].split(',').map(function(part) {
+          return parseFloat(part.trim());
+        });
+        if (parts.length < 3 || parts.some(function(v) { return Number.isNaN(v); })) {
+          return null;
+        }
+        return { r: parts[0], g: parts[1], b: parts[2] };
+      }
+
+      var computed = getComputedStyle(document.documentElement);
+      var rgb = parseRgb(computed.backgroundColor);
+      if (!rgb) { return; }
+      var luminance = (0.2126 * rgb.r + 0.7152 * rgb.g + 0.0722 * rgb.b) / 255;
+      if (luminance < 0.5) {
+        document.documentElement.classList.add('theme-dark');
+      }
+    })();
+  </script>
 </head>
 <body>
   <div class="container">
