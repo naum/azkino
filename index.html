@@ -198,6 +198,8 @@
         --quote-scratch: color-mix(in srgb, {color:Text} 7%, {color:Background} 93%);
         --quote-parchment: color-mix(in srgb, {color:Background Accent} 28%, {color:Background} 72%);
         --quote-edge: color-mix(in srgb, {color:Background Accent} 38%, {color:Text} 62%);
+        --button-text: {color:Background};
+        --button-hover-bg: {color:Text Accent};
     }
     html.theme-dark {
         --surface: color-mix(in srgb, {color:Background} 92%, {color:Background Accent} 8%);
@@ -210,6 +212,8 @@
         --quote-bg: color-mix(in srgb, {color:Background} 92%, {color:Background Accent} 8%);
         --quote-parchment: color-mix(in srgb, {color:Background Accent} 18%, {color:Background} 82%);
         --quote-edge: color-mix(in srgb, {color:Background Accent} 22%, {color:Background} 78%);
+        --button-text: {color:Text};
+        --button-hover-bg: color-mix(in srgb, {color:Background Accent} 78%, {color:Brand} 22%);
     }
     html, body {
       margin: 0; padding: 0;
@@ -321,14 +325,14 @@
       border: none;
       border-radius: 0 1em 1em 0;
       background: {color:Brand};
-      color: {color:Background};
+      color: var(--button-text);
       font-size: 1.08em;
       cursor: pointer;
       transition: background 0.2s;
       text-transform: uppercase;
     }
     .search-bar button:hover {
-      background: {color:Text Accent};
+      background: var(--button-hover-bg);
     }
     .menu {
       display: flex;
@@ -342,14 +346,14 @@
       border-radius: 0.75em;
       border: none;
       background: {color:Brand};
-      color: {color:Background};
+      color: var(--button-text);
       font-size: 0.92em;
       transition: background 0.2s, color 0.2s;
     }
     .menu a:hover,
     .menu a:focus {
-      background: {color:Text Accent};
-      color: {color:Background};
+      background: var(--button-hover-bg);
+      color: var(--button-text);
       text-decoration: none;
     }
     .description {
@@ -645,7 +649,7 @@
       margin: 2.5em 0 0 0;
     }
     .pagination a {
-      color: {color:Background};
+      color: var(--button-text);
       padding: 0.75em 1.33em;
       border-radius: 0.75em;
       text-decoration: none;
@@ -666,8 +670,8 @@
       margin-left: 0.25em;
     }
     .pagination a:hover {
-      color: {color:Background};
-      background: {color:Text Accent};
+      color: var(--button-text);
+      background: var(--button-hover-bg);
       text-decoration: none;
     }
     
@@ -719,7 +723,7 @@
       padding: 0.45em 0.95em;
       border-radius: 999px;
       background: {color:Brand};
-      color: {color:Background};
+      color: var(--button-text);
       border: 2px solid {color:Brand};
       font-size: 0.92em;
       text-decoration: none;
@@ -728,9 +732,9 @@
 
     #tagcloud a:hover,
     #tagcloud a:focus {
-      background: {color:Text Accent};
-      border-color: {color:Text Accent};
-      color: {color:Background};
+      background: var(--button-hover-bg);
+      border-color: var(--button-hover-bg);
+      color: var(--button-text);
       transform: translateY(-1px);
     }
 
