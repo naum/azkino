@@ -328,7 +328,8 @@
     .search-bar {
       display: flex;
       justify-content: center;
-      margin-bottom: 2em;
+      margin-bottom: 2.37rem;
+      margin-top: 1.33rem;
     }
     .search-bar input[type="text"] {
       width: 80%;
@@ -357,6 +358,11 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       box-shadow: 0 6px 14px var(--shadow-soft), inset 0 1px 0 var(--shadow-faint);
+    }
+    .search-bar button svg {
+      width: 1.1em;
+      height: 1.1em;
+      display: block;
     }
     .search-bar button:hover {
       background: var(--button-hover-bg);
@@ -679,7 +685,7 @@
 
     .pagination {
       text-align: center;
-      margin: 2.5em 0 0 0;
+      margin: 3.16em 0 0 0;
     }
     .pagination a {
       color: var(--button-text);
@@ -818,7 +824,12 @@
     </div>
     <form class="search-bar" action="/search" method="get">
       <input type="text" name="q" placeholder="" value="{SearchQuery}" />
-      <button type="submit">Search</button>
+      <button type="submit" aria-label="Search">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"></circle>
+          <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+        </svg>
+      </button>
     </form>
     <nav class="menu">
       {block:HasPages}
