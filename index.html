@@ -11,13 +11,12 @@
   {/block:Description}
 
   <!-- Tumblr Custom Colors -->
-  <meta name="color:Text" content="#d9e4ff"/>
-  <meta name="color:Text Accent" content="#9fb3e6"/>
-  <meta name="color:Background" content="#0b1022"/>
-  <meta name="color:Background Accent" content="#1a2340"/>
   <meta name="color:Brand" content="#f06a3a"/>
 
   <!-- Tumblr Custom Text -->
+  <meta name="select:Theme Mode" content="Auto"/>
+  <meta name="select:Theme Mode" content="Light"/>
+  <meta name="select:Theme Mode" content="Dark"/>
   <meta name="text:Popular Tags Title" content="Popular Tags"/>
   <meta name="text:Popular Tags" content=""/>
   <meta name="text:Max Width" content="650px"/>
@@ -187,36 +186,47 @@
 
   <style>
     :root {
-        --brand-accent: color-mix(in srgb, {color:Brand} 80%, {color:Text} 20%);
         --body-size: {text:Body Font Size};
-        --surface: color-mix(in srgb, {color:Background} 96%, {color:Background Accent} 4%);
-        --surface-strong: color-mix(in srgb, {color:Background} 92%, {color:Background Accent} 8%);
-        --post-bg: color-mix(in srgb, var(--surface) 60%, {color:Background} 40%);
-        --shadow-faint: color-mix(in srgb, {color:Text} 6%, transparent);
-        --shadow-soft: color-mix(in srgb, {color:Text} 10%, transparent);
-        --shadow-strong: color-mix(in srgb, {color:Text} 35%, transparent);
-        --blockquote-border: color-mix(in srgb, {color:Text} 25%, {color:Background} 75%);
-        --quote-bg: color-mix(in srgb, {color:Background} 96%, {color:Background Accent} 4%);
-        --quote-ink: color-mix(in srgb, {color:Text} 82%, {color:Background} 18%);
-        --quote-scratch: color-mix(in srgb, {color:Text} 7%, {color:Background} 93%);
-        --quote-parchment: color-mix(in srgb, {color:Background Accent} 28%, {color:Background} 72%);
-        --quote-edge: color-mix(in srgb, {color:Background Accent} 38%, {color:Text} 62%);
-        --button-text: {color:Background};
-        --button-hover-bg: {color:Text Accent};
+        --brand: {color:Brand};
+        --bg: color-mix(in srgb, white 95%, var(--brand) 5%);
+        --bg-accent: color-mix(in srgb, white 86%, var(--brand) 14%);
+        --text: color-mix(in srgb, black 88%, var(--brand) 12%);
+        --text-accent: color-mix(in srgb, black 62%, var(--brand) 38%);
+        --brand-accent: color-mix(in srgb, var(--brand) 80%, var(--text) 20%);
+        --link-color: var(--brand);
+        --link-hover: hsl(from var(--brand) calc(h + 180) s clamp(0%, calc(l + 6%), 100%));
+        --surface: color-mix(in srgb, var(--bg) 96%, var(--bg-accent) 4%);
+        --surface-strong: color-mix(in srgb, var(--bg) 92%, var(--bg-accent) 8%);
+        --post-bg: color-mix(in srgb, var(--surface) 60%, var(--bg) 40%);
+        --shadow-faint: color-mix(in srgb, var(--text) 6%, transparent);
+        --shadow-soft: color-mix(in srgb, var(--text) 10%, transparent);
+        --shadow-strong: color-mix(in srgb, var(--text) 35%, transparent);
+        --blockquote-border: color-mix(in srgb, var(--text) 25%, var(--bg) 75%);
+        --quote-bg: color-mix(in srgb, var(--bg) 96%, var(--bg-accent) 4%);
+        --quote-ink: color-mix(in srgb, var(--text) 82%, var(--bg) 18%);
+        --quote-scratch: color-mix(in srgb, var(--text) 7%, var(--bg) 93%);
+        --quote-parchment: color-mix(in srgb, var(--bg-accent) 28%, var(--bg) 72%);
+        --quote-edge: color-mix(in srgb, var(--bg-accent) 38%, var(--text) 62%);
+        --button-text: var(--bg);
+        --button-hover-bg: color-mix(in srgb, var(--brand) 70%, white 30%);
     }
     html.theme-dark {
-        --surface: color-mix(in srgb, {color:Background} 92%, {color:Background Accent} 8%);
-        --surface-strong: color-mix(in srgb, {color:Background} 88%, {color:Background Accent} 12%);
-        --post-bg: color-mix(in srgb, {color:Background} 90%, {color:Background Accent} 10%);
-        --shadow-faint: color-mix(in srgb, {color:Text} 10%, transparent);
-        --shadow-soft: color-mix(in srgb, {color:Text} 18%, transparent);
-        --shadow-strong: color-mix(in srgb, {color:Text} 45%, transparent);
-        --blockquote-border: color-mix(in srgb, {color:Text} 62%, {color:Background} 38%);
-        --quote-bg: color-mix(in srgb, {color:Background} 92%, {color:Background Accent} 8%);
-        --quote-parchment: color-mix(in srgb, {color:Background Accent} 18%, {color:Background} 82%);
-        --quote-edge: color-mix(in srgb, {color:Background Accent} 22%, {color:Background} 78%);
-        --button-text: {color:Text};
-        --button-hover-bg: color-mix(in srgb, {color:Background Accent} 78%, {color:Brand} 22%);
+        --bg: color-mix(in srgb, black 92%, var(--brand) 8%);
+        --bg-accent: color-mix(in srgb, black 82%, var(--brand) 18%);
+        --text: color-mix(in srgb, white 88%, var(--brand) 12%);
+        --text-accent: color-mix(in srgb, white 62%, var(--brand) 38%);
+        --surface: color-mix(in srgb, var(--bg) 92%, var(--bg-accent) 8%);
+        --surface-strong: color-mix(in srgb, var(--bg) 88%, var(--bg-accent) 12%);
+        --post-bg: color-mix(in srgb, var(--bg) 90%, var(--bg-accent) 10%);
+        --shadow-faint: color-mix(in srgb, var(--text) 10%, transparent);
+        --shadow-soft: color-mix(in srgb, var(--text) 18%, transparent);
+        --shadow-strong: color-mix(in srgb, var(--text) 45%, transparent);
+        --blockquote-border: color-mix(in srgb, var(--text) 62%, var(--bg) 38%);
+        --quote-bg: color-mix(in srgb, var(--bg) 92%, var(--bg-accent) 8%);
+        --quote-parchment: color-mix(in srgb, var(--bg-accent) 18%, var(--bg) 82%);
+        --quote-edge: color-mix(in srgb, var(--bg-accent) 22%, var(--bg) 78%);
+        --button-text: var(--text);
+        --button-hover-bg: color-mix(in srgb, var(--bg-accent) 78%, var(--brand) 22%);
     }
     html, body {
       margin: 0; padding: 0;
@@ -226,20 +236,20 @@
         calc(var(--body-size) + 0.35vw),
         calc(var(--body-size) + 6px)
       );
-      background: {color:Background};
-      color: {color:Text};
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.33;
       min-height: 100%;
     }
     a {
-      color: var(--color-text-accent, {color:Text Accent});
+      color: var(--link-color);
       text-decoration: none;
       transition: color 0.18s, text-decoration 0.18s;
     }
     
     a:hover,
     a:focus {
-      color: var(--color-brand, {color:Brand});
+      color: var(--link-hover);
       text-decoration: underline;
     }
     strong, b {
@@ -258,11 +268,11 @@
     }
     
     blockquote {
-        border-left: 4px solid var(--blockquote-border, {color:Brand});
+        border-left: 4px solid var(--blockquote-border);
         font-size: 1rem;
         margin: 1em 0;
         padding: 12px 20px;
-        color: {color:Text};
+        color: var(--text);
     }
     dt {
       font-weight: bold;
@@ -274,7 +284,7 @@
       max-width: {text:Max Width};
       margin: 2.37em auto;
       padding: 2em 1.5em;
-      background: {color:Background Accent};
+      background: var(--bg-accent);
       border-radius: 1em;
       box-shadow: 0 3px 24px var(--shadow-soft);
     }
@@ -287,17 +297,17 @@
       font-weight: 800;
       text-align: center;
       margin: 0 0 1.77rem 0;
-      color: {color:Background};
+      color: var(--bg);
       letter-spacing: 0.03em;
       text-shadow: 
-        2px 0 0 {color:Text},
-        -2px 0 0 {color:Text},
-        0 2px 0 {color:Text},
-        0 -2px 0 {color:Text},
-        1.5px 1.5px 0 {color:Text},
-        1.5px -1.5px 0 {color:Text},
-        -1.5px 1.5px 0 {color:Text},
-        -1.5px -1.5px 0 {color:Text},
+        2px 0 0 var(--text),
+        -2px 0 0 var(--text),
+        0 2px 0 var(--text),
+        0 -2px 0 var(--text),
+        1.5px 1.5px 0 var(--text),
+        1.5px -1.5px 0 var(--text),
+        -1.5px 1.5px 0 var(--text),
+        -1.5px -1.5px 0 var(--text),
         0 8px 16px var(--shadow-strong);
     }
     .blog-title h1 {
@@ -316,10 +326,10 @@
       display: none;
     }
     .blog-title a {
-        color: {color:Brand};
+        color: var(--link-color);
     }
     .blog-title a:hover {
-        color: {color:Text Accent};
+        color: var(--link-hover);
         text-decoration: none;
     }
     .link {
@@ -336,19 +346,19 @@
       max-width: 420px;
       padding: 0.7em 1em;
       font-size: 1.08em;
-      border: 2px solid {color:Brand};
+      border: 2px solid var(--brand);
       border-radius: 1em 0 0 1em;
       font-family: {select:Monospace Font}, monospace;
       outline: none;
       background: var(--surface);
-      color: {color:Text};
+      color: var(--text);
       transition: border 0.2s;
     }
     .search-bar button {
       padding: 0.7em 1.3em;
-      border: 2px solid {color:Brand};
+      border: 2px solid var(--brand);
       border-radius: 0 1em 1em 0;
-      background: {color:Brand};
+      background: var(--brand);
       color: var(--button-text);
       font-family: {select:Body Font}, sans-serif;
       font-size: 1.08em;
@@ -378,8 +388,8 @@
     .menu a {
       padding: 0.6em 1.15em;
       border-radius: 0.75em;
-      border: 2px solid {color:Brand};
-      background: {color:Brand};
+      border: 2px solid var(--brand);
+      background: var(--brand);
       color: var(--button-text);
       font-size: 0.86em;
       font-weight: 700;
@@ -397,7 +407,7 @@
     }
     .description {
       text-align: center;
-      color: {color:Text Accent};
+      color: var(--text-accent);
       margin-bottom: 2.5em;
       font-size: 1em;
       font-style: italic;
@@ -411,7 +421,7 @@
       font-size: 1.33rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: {color:Text Accent};
+      color: var(--text-accent);
     }
     .popular-tags-list {
       display: flex;
@@ -422,7 +432,7 @@
     }
     .popular-tags-list a {
       font-size: 1.16em;
-      color: {color:Text Accent};
+      color: var(--link-color);
     }
     .chat-lines {
       list-style: none;
@@ -431,7 +441,7 @@
     }
     .chat-lines li {
       padding: 0.3em 0;
-      border-bottom: 1px solid {color:Background Accent};
+      border-bottom: 1px solid var(--bg-accent);
     }
     .chat-lines li:last-child {
       border-bottom: none;
@@ -443,14 +453,14 @@
     .post.answer .answer-question-text {
       margin-bottom: 0.9em;
       padding: 0.65em 0.9em;
-      border: 2px solid {color:Brand};
-      background: {color:Background Accent};
+      border: 2px solid var(--brand);
+      background: var(--bg-accent);
       border-radius: 0.6em;
     }
     .post.answer .answer {
       padding: 0.75em 0.95em;
       background: var(--surface-strong);
-      border: 1px solid {color:Background Accent};
+      border: 1px solid var(--bg-accent);
       border-radius: 0.6em;
     }
     article {
@@ -464,7 +474,7 @@
     .post-title {
       margin: 0 0 0.3em 0;
       font-size: 1.28em;
-      color: {color:Brand};
+      color: var(--brand);
       font-weight: bold;
     }
     .post.text {
@@ -496,7 +506,7 @@
       margin-bottom: 0;
     }
     .post-date a {
-      color: {color:Text Accent};
+      color: var(--link-color);
       opacity: 0.48;
     }
     .post-date a:hover,
@@ -538,12 +548,12 @@
       font-size: 0.96em;
     }
     .tags a {
-      color: {color:Text Accent};
+      color: var(--link-color);
       margin-right: 0.5em;
       text-decoration: none;
     }
     .tags a:hover {
-      color: {color:Brand};
+      color: var(--link-hover);
       text-decoration: underline;
     }
     .post-footer {
@@ -554,13 +564,13 @@
       margin: 0;
       padding-top: 12px;
       padding-bottom: 12px;
-      border-top: 1px solid {color:Background Accent};
+      border-top: 1px solid var(--bg-accent);
       gap: 0.6rem 1.2rem;
       font-size: 0.96em;
     }
 
     .post-footer a {
-        color: {color:Text Accent};
+        color: var(--link-color);
     }
 
     .post-footer .like_button {
@@ -576,7 +586,7 @@
       display: none;
     }
     footer p {
-      color: color-mix(in srgb, {color:Text Accent} 48%, {color:Background} 52%);
+      color: color-mix(in srgb, var(--text-accent) 48%, var(--bg) 52%);
     }
     footer p a {
       color: inherit;
@@ -598,7 +608,7 @@
     .post-notes {
       margin-top: 1.77em;
       padding: 1em 0;
-      border-top: 1px solid {color:Background Accent};
+      border-top: 1px solid var(--bg-accent);
     }
     
     .post-notes ol {
@@ -692,8 +702,8 @@
       padding: 0.75em 1.33em;
       border-radius: 0.75em;
       text-decoration: none;
-      background: {color:Brand};
-      border: 2px solid {color:Brand};
+      background: var(--brand);
+      border: 2px solid var(--brand);
       margin: 0 0.6em;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -776,9 +786,9 @@
       display: inline-block;
       padding: 0.45em 0.95em;
       border-radius: 999px;
-      background: {color:Brand};
+      background: var(--brand);
       color: var(--button-text);
-      border: 2px solid {color:Brand};
+      border: 2px solid var(--brand);
       font-size: 0.92em;
       text-decoration: none;
       font-weight: 700;
@@ -802,26 +812,57 @@
   </style>
   <script>
     (function() {
+      function parseHex(value) {
+        if (!value) { return null; }
+        var hex = value.replace('#', '').trim();
+        if (hex.length === 3) {
+          hex = hex.split('').map(function(ch) { return ch + ch; }).join('');
+        }
+        if (hex.length !== 6) { return null; }
+        var intVal = parseInt(hex, 16);
+        if (Number.isNaN(intVal)) { return null; }
+        return {
+          r: (intVal >> 16) & 255,
+          g: (intVal >> 8) & 255,
+          b: intVal & 255
+        };
+      }
+
       function parseRgb(value) {
         if (!value) { return null; }
         var match = value.match(/rgba?\(([^)]+)\)/);
         if (!match) { return null; }
-        var parts = match[1].split(',').map(function(part) {
+        var normalized = match[1].replace(/\//g, ' ').trim();
+        var parts = normalized.split(/[\s,]+/).map(function(part) {
           return parseFloat(part.trim());
         });
-        if (parts.length < 3 || parts.some(function(v) { return Number.isNaN(v); })) {
+        if (parts.length < 3 || parts.slice(0, 3).some(function(v) { return Number.isNaN(v); })) {
           return null;
         }
         return { r: parts[0], g: parts[1], b: parts[2] };
       }
 
-      var computed = getComputedStyle(document.documentElement);
-      var rgb = parseRgb(computed.backgroundColor);
+      function parseColor(value) {
+        return parseHex(value) || parseRgb(value);
+      }
+
+      var root = document.documentElement;
+      var computed = getComputedStyle(root);
+      var mode = "{select:Theme Mode}".toLowerCase().trim();
+
+      if (mode === "light" || mode === "dark") {
+        root.classList.toggle('theme-dark', mode === "dark");
+        root.classList.toggle('theme-light', mode === "light");
+        return;
+      }
+
+      var brand = computed.getPropertyValue('--brand').trim();
+      var rgb = parseColor(brand);
       if (!rgb) { return; }
       var luminance = (0.2126 * rgb.r + 0.7152 * rgb.g + 0.0722 * rgb.b) / 255;
-      if (luminance < 0.5) {
-        document.documentElement.classList.add('theme-dark');
-      }
+      var isDark = luminance < 0.5;
+      root.classList.toggle('theme-dark', isDark);
+      root.classList.toggle('theme-light', !isDark);
     })();
   </script>
 </head>
@@ -989,7 +1030,7 @@
               <div style="
                 margin-top: 0.75rem;
                 margin-bottom: 0.75rem;
-                color: {color:Text Accent};
+                color: var(--text-accent);
                 font-style: normal;
                 text-align: right;
               ">
@@ -1101,7 +1142,7 @@
         <a href="{NextPage}"><span class="pagination-label">Older</span><span class="arrow arrow-right">→</span></a>
       {/block:NextPage}
     </nav>
-    <footer style="text-align:center; margin-top:3.16rem; font-size:0.75rem; color: {color:Text Accent};">
+    <footer style="text-align:center; margin-top:3.16rem; font-size:0.75rem; color: var(--text-accent);">
         <div class="popular-tags" data-tags="{text:Popular Tags}" data-title="{text:Popular Tags Title}">
             <div class="popular-tags-title"></div>
             <div class="popular-tags-list"></div>
