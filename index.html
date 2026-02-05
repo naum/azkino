@@ -194,7 +194,7 @@
         --text-accent: color-mix(in srgb, black 62%, var(--brand) 38%);
         --brand-accent: color-mix(in srgb, var(--brand) 80%, var(--text) 20%);
         --link-color: var(--brand);
-        --link-hover: hsl(from var(--brand) calc(h + 180) s clamp(0%, calc(l + 6%), 100%));
+        --link-hover: hsl(from var(--brand) calc(h + 180) s clamp(0%, calc(l + 8%), 100%));
         --surface: color-mix(in srgb, var(--bg) 96%, var(--bg-accent) 4%);
         --surface-strong: color-mix(in srgb, var(--bg) 92%, var(--bg-accent) 8%);
         --post-bg: color-mix(in srgb, var(--surface) 60%, var(--bg) 40%);
@@ -225,6 +225,7 @@
         --quote-bg: color-mix(in srgb, var(--bg) 92%, var(--bg-accent) 8%);
         --quote-parchment: color-mix(in srgb, var(--bg-accent) 18%, var(--bg) 82%);
         --quote-edge: color-mix(in srgb, var(--bg-accent) 22%, var(--bg) 78%);
+        --link-hover: hsl(from var(--brand) calc(h + 180) s clamp(0%, calc(l - 6%), 100%));
         --button-text: var(--text);
         --button-hover-bg: color-mix(in srgb, var(--bg-accent) 78%, var(--brand) 22%);
     }
